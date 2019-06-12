@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ScreenViewController.swift
 //  Custom Camera
 //
 //  Created by Kenny Arehart on 6/11/19.
@@ -9,22 +9,23 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     let captureSession = AVCaptureSession()
     var previewLayer: CALayer!
     var captureDevice:AVCaptureDevice!
     var takePhoto = false
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // prepareCamera()
+         prepareCamera()
     }
-
+    
     func prepareCamera() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
@@ -51,11 +52,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.view.layer.addSublayer(self.previewLayer)
         self.previewLayer.frame = self.view.layer.frame
         captureSession.startRunning()
-            
+        
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString):NSNumber(value:kCVPixelFormatType_32BGRA)] as [String: Any]
         dataOutput.alwaysDiscardsLateVideoFrames = true
-    
+        
         if captureSession.canAddOutput(dataOutput) {
             captureSession.addOutput(dataOutput)
         }
@@ -113,4 +114,3 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
 }
-

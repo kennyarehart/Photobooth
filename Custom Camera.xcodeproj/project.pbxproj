@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52420C1822B0BBEF00275292 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52420C1722B0BBEF00275292 /* CountdownViewController.swift */; };
+		52420C1A22B0CCCD00275292 /* ScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52420C1922B0CCCD00275292 /* ScreenViewController.swift */; };
 		52BF521C22B072FF00899F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF521B22B072FF00899F8E /* AppDelegate.swift */; };
 		52BF521E22B072FF00899F8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF521D22B072FF00899F8E /* ViewController.swift */; };
 		52BF522122B072FF00899F8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BF521F22B072FF00899F8E /* Main.storyboard */; };
 		52BF522322B0730000899F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BF522222B0730000899F8E /* Assets.xcassets */; };
 		52BF522622B0730000899F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BF522422B0730000899F8E /* LaunchScreen.storyboard */; };
+		52BF522E22B0758200899F8E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF522D22B0758200899F8E /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52420C1722B0BBEF00275292 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
+		52420C1922B0CCCD00275292 /* ScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewController.swift; sourceTree = "<group>"; };
 		52BF521822B072FF00899F8E /* Custom Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Custom Camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BF521B22B072FF00899F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52BF521D22B072FF00899F8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		52BF522222B0730000899F8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52BF522522B0730000899F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52BF522722B0730000899F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52BF522D22B0758200899F8E /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				52BF521B22B072FF00899F8E /* AppDelegate.swift */,
+				52420C1722B0BBEF00275292 /* CountdownViewController.swift */,
 				52BF521D22B072FF00899F8E /* ViewController.swift */,
+				52BF522D22B0758200899F8E /* PhotoViewController.swift */,
 				52BF521F22B072FF00899F8E /* Main.storyboard */,
 				52BF522222B0730000899F8E /* Assets.xcassets */,
 				52BF522422B0730000899F8E /* LaunchScreen.storyboard */,
 				52BF522722B0730000899F8E /* Info.plist */,
+				52420C1922B0CCCD00275292 /* ScreenViewController.swift */,
 			);
 			path = "Custom Camera";
 			sourceTree = "<group>";
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52420C1822B0BBEF00275292 /* CountdownViewController.swift in Sources */,
 				52BF521E22B072FF00899F8E /* ViewController.swift in Sources */,
+				52420C1A22B0CCCD00275292 /* ScreenViewController.swift in Sources */,
 				52BF521C22B072FF00899F8E /* AppDelegate.swift in Sources */,
+				52BF522E22B0758200899F8E /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +295,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8L4V6LQ5AH;
 				INFOPLIST_FILE = "Custom Camera/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +314,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8L4V6LQ5AH;
 				INFOPLIST_FILE = "Custom Camera/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
