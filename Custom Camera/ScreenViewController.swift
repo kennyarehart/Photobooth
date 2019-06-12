@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+
+
 class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     let captureSession = AVCaptureSession()
@@ -18,7 +20,16 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doSomethingAfterNotified),
+                                               name: NSNotification.Name(rawValue: myNotificationKey),
+                                               object: nil)
+    }
+    
+    @objc func doSomethingAfterNotified() {
+        print("I've been notified")
+        takePhoto = true
+//        FirstVCLabel.text = "Damn, I feel your spark 😱"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +78,8 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         dataOutput.setSampleBufferDelegate(self, queue: queue)
     }
     
-    @IBAction func takePhoto(_ sender: Any) {
-        takePhoto = true
-    }
-    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+//        print("captureOutput(), takePhoto:", takePhoto)
         if takePhoto  {
             takePhoto = false
             

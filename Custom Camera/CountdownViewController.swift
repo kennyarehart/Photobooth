@@ -8,6 +8,8 @@
 
 import UIKit
 
+let myNotificationKey = "com.bobthedeveloper.notificationKey"
+
 class CountdownViewController: UIViewController {
 
     var timer: Timer?
@@ -15,8 +17,14 @@ class CountdownViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doThisWhenNotify),
+                                               name: NSNotification.Name(rawValue: myNotificationKey),
+                                               object: nil)
     }
     
+    @objc func doThisWhenNotify() { print("I've sent a spark!") }
+   
     @IBAction func startTimer(_ sender: Any) {
         print("startTimer()")
         count = 3
@@ -42,6 +50,11 @@ class CountdownViewController: UIViewController {
         print("loop", count)
         if count == 0 {
             stopTimer()
+//            let screenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
+//            photoVC.takenPhoto = image
+//            let otherViewController: ScreenViewController = ScreenViewController()
+//            otherViewController.setTakePhoto()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
         }
     }
     
