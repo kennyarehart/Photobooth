@@ -8,12 +8,13 @@
 
 import UIKit
 
-let myNotificationKey = "com.bobthedeveloper.notificationKey"
+let myNotificationKey = "com.kennyarehart.notificationKey"
 
 class CountdownViewController: UIViewController {
 
     var timer: Timer?
-    var count = 3
+    var clockCount = 3
+    var totalCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,8 @@ class CountdownViewController: UIViewController {
    
     @IBAction func startTimer(_ sender: Any) {
         print("startTimer()")
-        count = 3
+        clockCount = 3
+        totalCount = 0
         updateLabel()
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loop), userInfo: nil, repeats: true)
@@ -45,21 +47,21 @@ class CountdownViewController: UIViewController {
     }
     
     @objc func loop() {
-        count -= 1
+        clockCount -= 1
         updateLabel()
-        print("loop", count)
-        if count == 0 {
-            stopTimer()
-//            let screenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-//            photoVC.takenPhoto = image
-//            let otherViewController: ScreenViewController = ScreenViewController()
-//            otherViewController.setTakePhoto()
+        print("loop", clockCount)
+        if clockCount == 0 {
+            totalCount += 1
             NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
+            if totalCount < 4 {
+                clockCount = 4
+            } else {
+                stopTimer()
+            }
         }
     }
     
     func updateLabel() {
-        timeLabel.text = String(count)
+        timeLabel.text = String(clockCount)
     }
-
 }

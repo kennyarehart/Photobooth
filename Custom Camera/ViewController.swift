@@ -18,9 +18,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-  
-    @IBOutlet weak var countdownView: UIView!
-    @IBOutlet weak var screenView: UIView!
     
 }
 

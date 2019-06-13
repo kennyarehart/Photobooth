@@ -9,14 +9,13 @@
 import UIKit
 import AVFoundation
 
-
-
 class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     let captureSession = AVCaptureSession()
     var previewLayer: CALayer!
     var captureDevice:AVCaptureDevice!
     var takePhoto = false
+    var imagePool: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +25,9 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                                                object: nil)
     }
     
-    @objc func doSomethingAfterNotified() {
-        print("I've been notified")
+    @objc func doSomethingAfterNotified(_ notification: NSNotification) {
+        print("I've been notified", (notification.object as! CountdownViewController).totalCount)
         takePhoto = true
-//        FirstVCLabel.text = "Damn, I feel your spark 😱"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,13 +84,17 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             if let image = self.getImageFromSampleBuffer(buffer: sampleBuffer) {
                 let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
                 
-                photoVC.takenPhoto = image
-                
-                DispatchQueue.main.async {
-                    self.present(photoVC, animated: true, completion: {
-                        self.stopCaptureSession()
-                    })
-                }
+                // save that photo first
+                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//                photoVC.takenPhoto = image
+//
+//                DispatchQueue.main.async {
+//                    self.present(photoVC, animated: true, completion: {
+//                        self.stopCaptureSession()
+//                    })
+//                }
+                imagePool.append(image)
+                print(imagePool.count, imagePool.capacity)
             }
         }
     }

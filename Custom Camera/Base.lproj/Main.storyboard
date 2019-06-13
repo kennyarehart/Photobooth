@@ -40,10 +40,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ewb-Zh-jTw"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="countdownView" destination="kdS-pn-lZd" id="SJB-gz-Pmb"/>
-                        <outlet property="screenView" destination="09p-dL-Pn8" id="Uj5-Op-bct"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,6 +103,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="y5i-g0-cML"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aHL-oW-8tG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,6 +138,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VwX-a7-XwZ"/>
                     </view>
                     <connections>
                         <outlet property="timeLabel" destination="uL2-V7-edO" id="YkH-B7-50D"/>
