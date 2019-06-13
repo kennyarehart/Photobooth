@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		52420C1722B0BBEF00275292 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		52420C1922B0CCCD00275292 /* ScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewController.swift; sourceTree = "<group>"; };
-		52BF521822B072FF00899F8E /* Custom Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Custom Camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BF521822B072FF00899F8E /* Photobooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photobooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BF521B22B072FF00899F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52BF521D22B072FF00899F8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52BF522022B072FF00899F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		52BF520F22B072FF00899F8E = {
 			isa = PBXGroup;
 			children = (
-				52BF521A22B072FF00899F8E /* Custom Camera */,
+				52BF521A22B072FF00899F8E /* Photobooth */,
 				52BF521922B072FF00899F8E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		52BF521922B072FF00899F8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				52BF521822B072FF00899F8E /* Custom Camera.app */,
+				52BF521822B072FF00899F8E /* Photobooth.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		52BF521A22B072FF00899F8E /* Custom Camera */ = {
+		52BF521A22B072FF00899F8E /* Photobooth */ = {
 			isa = PBXGroup;
 			children = (
 				52BF521B22B072FF00899F8E /* AppDelegate.swift */,
@@ -70,15 +70,15 @@
 				52BF522722B0730000899F8E /* Info.plist */,
 				52420C1922B0CCCD00275292 /* ScreenViewController.swift */,
 			);
-			path = "Custom Camera";
+			path = Photobooth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		52BF521722B072FF00899F8E /* Custom Camera */ = {
+		52BF521722B072FF00899F8E /* Photobooth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52BF522A22B0730000899F8E /* Build configuration list for PBXNativeTarget "Custom Camera" */;
+			buildConfigurationList = 52BF522A22B0730000899F8E /* Build configuration list for PBXNativeTarget "Photobooth" */;
 			buildPhases = (
 				52BF521422B072FF00899F8E /* Sources */,
 				52BF521522B072FF00899F8E /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = "Custom Camera";
+			name = Photobooth;
 			productName = "Custom Camera";
-			productReference = 52BF521822B072FF00899F8E /* Custom Camera.app */;
+			productReference = 52BF521822B072FF00899F8E /* Photobooth.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 52BF521322B072FF00899F8E /* Build configuration list for PBXProject "Custom Camera" */;
+			buildConfigurationList = 52BF521322B072FF00899F8E /* Build configuration list for PBXProject "Photobooth" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				52BF521722B072FF00899F8E /* Custom Camera */,
+				52BF521722B072FF00899F8E /* Photobooth */,
 			);
 		};
 /* End PBXProject section */
@@ -294,15 +294,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8L4V6LQ5AH;
-				INFOPLIST_FILE = "Custom Camera/Info.plist";
+				INFOPLIST_FILE = Photobooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kennyarehart.Custom-Camera";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kennyarehart.Photobooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,15 +314,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8L4V6LQ5AH;
-				INFOPLIST_FILE = "Custom Camera/Info.plist";
+				INFOPLIST_FILE = Photobooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kennyarehart.Custom-Camera";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kennyarehart.Photobooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -331,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		52BF521322B072FF00899F8E /* Build configuration list for PBXProject "Custom Camera" */ = {
+		52BF521322B072FF00899F8E /* Build configuration list for PBXProject "Photobooth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52BF522822B0730000899F8E /* Debug */,
@@ -340,7 +342,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52BF522A22B0730000899F8E /* Build configuration list for PBXNativeTarget "Custom Camera" */ = {
+		52BF522A22B0730000899F8E /* Build configuration list for PBXNativeTarget "Photobooth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52BF522B22B0730000899F8E /* Debug */,
