@@ -87,17 +87,14 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 // save that photo first
                  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                 
-                // show the results
-//                let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-//                photoVC.takenPhoto = image
-//
-//                DispatchQueue.main.async {
-//                    self.present(photoVC, animated: true, completion: {
-//                        self.stopCaptureSession()
-//                    })
-//                }
+               
                 imagePool.append(image)
-                print(imagePool.count, imagePool.capacity)
+                print(imagePool.count, imagePool.capacity, image.size)
+                if imagePool.count == 4 {
+                    let mergedImage = image.mergeToGrid(images: imagePool)
+                    self.showResults(image: mergedImage)
+                }
+               
             }
         }
     }
@@ -126,4 +123,40 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
         }
     }
+    
+    
+    func showResults(image: UIImage) {
+        // show the results
+        let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
+        photoVC.takenPhoto = image
+
+        DispatchQueue.main.async {
+            self.present(photoVC, animated: true, completion: {
+                self.stopCaptureSession()
+            })
+        }
+    }
+}
+
+extension UIImage {
+
+    func mergeToGrid(images: [UIImage]) -> UIImage {
+        let first = images[0]
+        let newWidth = first.size.width * 2
+        let newHeight = first.size.height * 2
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        print(newWidth, "x", newHeight, "|", newSize)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        for (index, element) in images.enumerated() {
+            let x = CGFloat(index % 2) * first.size.width
+            let y = floor(CGFloat(index) / 2) * first.size.height
+            element.draw(in: CGRect(origin: CGPoint(x: Double(x), y: Double(y)), size: first.size))
+        }
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
 }
