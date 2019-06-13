@@ -82,10 +82,13 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             takePhoto = false
             
             if let image = self.getImageFromSampleBuffer(buffer: sampleBuffer) {
-                let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
+                
                 
                 // save that photo first
                  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                
+                // show the results
+//                let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
 //                photoVC.takenPhoto = image
 //
 //                DispatchQueue.main.async {
