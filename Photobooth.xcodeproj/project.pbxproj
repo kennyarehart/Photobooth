@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5222E01C22B32F100043B882 /* UIImage_mergeToGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222E01B22B32F100043B882 /* UIImage_mergeToGrid.swift */; };
 		52420C1822B0BBEF00275292 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52420C1722B0BBEF00275292 /* CountdownViewController.swift */; };
 		52420C1A22B0CCCD00275292 /* ScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52420C1922B0CCCD00275292 /* ScreenViewController.swift */; };
 		52BF521C22B072FF00899F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF521B22B072FF00899F8E /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5222E01B22B32F100043B882 /* UIImage_mergeToGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_mergeToGrid.swift; sourceTree = "<group>"; };
 		52420C1722B0BBEF00275292 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		52420C1922B0CCCD00275292 /* ScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewController.swift; sourceTree = "<group>"; };
 		52BF521822B072FF00899F8E /* Photobooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photobooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5222E01A22B32EE20043B882 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5222E01B22B32F100043B882 /* UIImage_mergeToGrid.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		52BF520F22B072FF00899F8E = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		52BF521A22B072FF00899F8E /* Photobooth */ = {
 			isa = PBXGroup;
 			children = (
+				5222E01A22B32EE20043B882 /* Extensions */,
 				52BF521B22B072FF00899F8E /* AppDelegate.swift */,
 				52420C1722B0BBEF00275292 /* CountdownViewController.swift */,
 				52BF521D22B072FF00899F8E /* ViewController.swift */,
@@ -149,6 +160,7 @@
 				52420C1A22B0CCCD00275292 /* ScreenViewController.swift in Sources */,
 				52BF521C22B072FF00899F8E /* AppDelegate.swift in Sources */,
 				52BF522E22B0758200899F8E /* PhotoViewController.swift in Sources */,
+				5222E01C22B32F100043B882 /* UIImage_mergeToGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kennyarehart.Photobooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -326,7 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kennyarehart.Photobooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

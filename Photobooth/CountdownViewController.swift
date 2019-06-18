@@ -18,15 +18,23 @@ class CountdownViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeLabel.text = ""
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(doThisWhenNotify),
                                                name: NSNotification.Name(rawValue: myNotificationKey),
                                                object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        startButton.isHidden = false
+    }
+    
     @objc func doThisWhenNotify() { print("I've sent a spark!") }
-   
-    @IBAction func startTimer(_ sender: Any) {
+    
+    @IBOutlet weak var startButton: UIButton!
+    
+    @IBAction func startTimer(_ sender: UIButton) {
+        sender.isHidden = true
         print("startTimer()")
         clockCount = 3
         totalCount = 0
@@ -61,7 +69,7 @@ class CountdownViewController: UIViewController {
         }
     }
     
-    func updateLabel() {
-        timeLabel.text = String(clockCount)
+    func updateLabel() {        
+        timeLabel.text = clockCount == 0 ? "" : String(clockCount)
     }
 }

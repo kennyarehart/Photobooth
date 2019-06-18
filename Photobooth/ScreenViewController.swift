@@ -57,9 +57,14 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        if let connection = previewLayer.connection {
+            connection.videoOrientation = .landscapeRight
+        }
+        
         self.previewLayer = previewLayer
         self.view.layer.addSublayer(self.previewLayer)
         self.previewLayer.frame = self.view.layer.frame
+
         captureSession.startRunning()
         
         let dataOutput = AVCaptureVideoDataOutput()
@@ -77,16 +82,13 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-//        print("captureOutput(), takePhoto:", takePhoto)
         if takePhoto  {
             takePhoto = false
             
             if let image = self.getImageFromSampleBuffer(buffer: sampleBuffer) {
                 
-                
                 // save that photo first
-                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                
                 imagePool.append(image)
                 print(imagePool.count, imagePool.capacity, image.size)
@@ -107,7 +109,7 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             let imageRect = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
             
             if let image = context.createCGImage(ciImage, from: imageRect) {
-                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
+                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .down)
             }
         }
         
@@ -138,25 +140,3 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
 }
 
-extension UIImage {
-
-    func mergeToGrid(images: [UIImage]) -> UIImage {
-        let first = images[0]
-        let newWidth = first.size.width * 2
-        let newHeight = first.size.height * 2
-        let newSize = CGSize(width: newWidth, height: newHeight)
-        print(newWidth, "x", newHeight, "|", newSize)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        for (index, element) in images.enumerated() {
-            let x = CGFloat(index % 2) * first.size.width
-            let y = floor(CGFloat(index) / 2) * first.size.height
-            element.draw(in: CGRect(origin: CGPoint(x: Double(x), y: Double(y)), size: first.size))
-        }
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-
-}
