@@ -15,6 +15,9 @@ class CountdownViewController: UIViewController {
     var timer: Timer?
     var clockCount = 3
     var totalCount = 0
+    var ogTransform: CGAffineTransform?
+    var lgTransform: CGAffineTransform?
+    var smallTransform: CGAffineTransform?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class CountdownViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         startButton.isHidden = false
+        self.ogTransform = self.timeLabel.transform
+        self.lgTransform = self.timeLabel.transform.scaledBy(x: 2.0, y: 2.0)
+        self.smallTransform = self.timeLabel.transform.scaledBy(x: 0.5, y: 0.5)
     }
     
     @objc func doThisWhenNotify() { print("I've sent a spark!") }
@@ -36,7 +42,7 @@ class CountdownViewController: UIViewController {
     @IBAction func startTimer(_ sender: UIButton) {
         sender.isHidden = true
         print("startTimer()")
-        clockCount = 3
+        clockCount = 5
         totalCount = 0
         updateLabel()
         if timer == nil {
@@ -60,7 +66,7 @@ class CountdownViewController: UIViewController {
         print("loop", clockCount)
         if clockCount == 0 {
             totalCount += 1
-            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
+//            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
             if totalCount < 4 {
                 clockCount = 4
             } else {
@@ -69,7 +75,30 @@ class CountdownViewController: UIViewController {
         }
     }
     
-    func updateLabel() {        
-        timeLabel.text = clockCount == 0 ? "" : String(clockCount)
+    func updateLabel() {
+        if clockCount > 3 {
+            timeLabel.text = "Ready??"
+        } else if clockCount == 0 {
+            timeLabel.text = ""
+        } else {
+            timeLabel.text = String(clockCount)
+        }
+       
+        if (clockCount > 0 && clockCount <= 4) {
+            animLabel()
+        }
+    }
+    
+    func animLabel() {
+        self.timeLabel.alpha = 1.0
+        let currentTargetTransform = clockCount < 4 ? self.lgTransform : self.ogTransform
+        let scaledTransform = currentTargetTransform!.scaledBy(x: 0.5, y: 0.5)
+        self.timeLabel.transform = currentTargetTransform!
+        UIView.animate(withDuration: 0.95, delay:0.0, options: .curveEaseIn, animations: {
+            self.timeLabel.alpha = 0.0
+            if self.clockCount <= 4 {
+                self.timeLabel.transform = scaledTransform
+            }
+        })
     }
 }
