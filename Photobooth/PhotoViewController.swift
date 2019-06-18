@@ -25,16 +25,26 @@ class PhotoViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(takenPhoto!, nil, nil, nil)
         self.dismiss(animated: true, completion: nil)
+        printIt(img: takenPhoto)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func printIt(img:Any) {
+        let printInfo = UIPrintInfo(dictionary: nil)
+        printInfo.jobName = "My Print Job"
+        printInfo.outputType = .photo
+            
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        
+        printController.showsNumberOfCopies = false
+        printController.printingItem = img
+        
+        // If you want to specify a printer
+//        guard let printerURL = URL(string: "Your printer URL here, e.g. ipps://HPDC4A3E0DE24A.local.:443/ipp/print") else { return }
+//        guard let currentPrinter = UIPrinter(url: printerURL) else { return }
+//        printController.print(to: <#T##UIPrinter#>, completionHandler: <#T##UIPrintInteractionController.CompletionHandler?##UIPrintInteractionController.CompletionHandler?##(UIPrintInteractionController, Bool, Error?) -> Void#>)
+        printController.present(animated:true, completionHandler: nil)
+        
     }
-    */
 
 }

@@ -138,5 +138,6 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             })
         }
     }
+        
 }
 
