@@ -25,6 +25,8 @@ class ViewController: UIViewController {
 //        session.inputStream?.schedule(in: RunLoop.main, forMode: RunLoop.Mode.defaultRunLoopMode)
 //        session.inputStream?.open()
 //         print("accessory:", accessory)
+//        let greyCircle = UIImage.init(named: "photobooth_output_3")
+//        print("greyCircle:", greyCircle)
     }
     
 }
