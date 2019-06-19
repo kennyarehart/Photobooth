@@ -18,6 +18,7 @@ class CountdownViewController: UIViewController {
     var ogTransform: CGAffineTransform?
     var lgTransform: CGAffineTransform?
     var smallTransform: CGAffineTransform?
+    var uiFlash: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,13 @@ class CountdownViewController: UIViewController {
         self.ogTransform = self.timeLabel.transform
         self.lgTransform = self.timeLabel.transform.scaledBy(x: 2.0, y: 2.0)
         self.smallTransform = self.timeLabel.transform.scaledBy(x: 0.5, y: 0.5)
+        
+        uiFlash = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        uiFlash!.backgroundColor = UIColor.white
+        uiFlash!.alpha = 0
+        
+        // Add UIView as a Subview
+        self.view.addSubview(self.uiFlash!)
     }
     
     @objc func doThisWhenNotify() { print("I've sent a spark!") }
@@ -66,6 +74,7 @@ class CountdownViewController: UIViewController {
         print("loop", clockCount)
         if clockCount == 0 {
             totalCount += 1
+            animFlash()
             NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
             if totalCount < 4 {
                 clockCount = 4
@@ -99,6 +108,13 @@ class CountdownViewController: UIViewController {
             if self.clockCount <= 4 {
                 self.timeLabel.transform = scaledTransform
             }
+        })
+    }
+    
+    func animFlash() {
+        self.uiFlash!.alpha = 1
+        UIView.animate(withDuration: 0.95, delay: 0.0, options: .curveEaseIn, animations: {
+            self.uiFlash!.alpha = 0
         })
     }
 }
