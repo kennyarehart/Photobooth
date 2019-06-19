@@ -66,7 +66,7 @@ class CountdownViewController: UIViewController {
         print("loop", clockCount)
         if clockCount == 0 {
             totalCount += 1
-//            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
             if totalCount < 4 {
                 clockCount = 4
             } else {

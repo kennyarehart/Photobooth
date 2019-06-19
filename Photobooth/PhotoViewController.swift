@@ -39,12 +39,14 @@ class PhotoViewController: UIViewController {
         printController.showsNumberOfCopies = false
         printController.printingItem = img
         
+        //Wi-Fi is connected to TP-LINK_Extender_873053 and has the IP address 192.168.0.100.
         // If you want to specify a printer
 //        guard let printerURL = URL(string: "Your printer URL here, e.g. ipps://HPDC4A3E0DE24A.local.:443/ipp/print") else { return }
 //        guard let currentPrinter = UIPrinter(url: printerURL) else { return }
 //        printController.print(to: <#T##UIPrinter#>, completionHandler: <#T##UIPrintInteractionController.CompletionHandler?##UIPrintInteractionController.CompletionHandler?##(UIPrintInteractionController, Bool, Error?) -> Void#>)
-        printController.present(animated:true, completionHandler: nil)
         
+        // shows the printer prompt
+        printController.present(animated:true, completionHandler: nil)
     }
 
 }
