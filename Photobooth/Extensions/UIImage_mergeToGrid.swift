@@ -39,4 +39,32 @@ extension UIImage {
         
         return newImage
     }
+    
+    func mergeToGridOnly(images: [UIImage]) -> UIImage {
+        let first = images[0]
+        let newWidth = first.size.width * 2 + 16.0 * 3
+        let newHeight = first.size.height * 2 + 16.0 * 3
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        //        print(newWidth, "x", newHeight, "|", newSize)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        
+        // add each image
+        for (index, element) in images.enumerated() {
+            let xIndex = CGFloat(index % 2)
+            let x = xIndex * (first.size.width + 16.0) + 16.0
+            let yIndex = floor(CGFloat(index) / 2)
+            let y = yIndex * (first.size.height + 16.0) + 16.0
+//            print(xIndex, yIndex, "|", xIndex, yIndex)
+            element.draw(in: CGRect(origin: CGPoint(x: Double(x), y: Double(y)), size: first.size))
+        }
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
+    func applyBg(image: UIImage) -> UIImage {
+        return image
+    }
 }

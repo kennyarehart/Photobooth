@@ -88,13 +88,14 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             if let image = self.getImageFromSampleBuffer(buffer: sampleBuffer) {
                 
                 // save that photo first
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                
                 imagePool.append(image)
                 print(imagePool.count, imagePool.capacity, image.size)
                 if imagePool.count == 4 {
-                    let mergedImage = image.mergeToGrid(images: imagePool)
-                    self.showResults(image: mergedImage)
+                    let mergedImageGridOnly = image.mergeToGridOnly(images: imagePool)
+                    let mergedImagePrintable = image.mergeToGrid(images: imagePool)
+                    self.showResults(image: mergedImagePrintable, gridOnlyPhoto: mergedImageGridOnly)
                 }
                
             }
@@ -127,10 +128,11 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     
-    func showResults(image: UIImage) {
+    func showResults(image: UIImage, gridOnlyPhoto: UIImage) {
         // show the results
         let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
         photoVC.takenPhoto = image
+        photoVC.gridOnlyPhoto = gridOnlyPhoto
 
         DispatchQueue.main.async {
             self.present(photoVC, animated: true, completion: {

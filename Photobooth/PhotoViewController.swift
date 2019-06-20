@@ -10,22 +10,30 @@ import UIKit
 
 class PhotoViewController: UIViewController {
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     var takenPhoto:UIImage?
+    var gridOnlyPhoto:UIImage?
     
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let availableImage = takenPhoto {
+        if let availableImage = gridOnlyPhoto {
             imageView.image = availableImage
         }
     }
-    
-    @IBAction func goBack(_ sender: Any) {
-        UIImageWriteToSavedPhotosAlbum(takenPhoto!, nil, nil, nil)
+    @IBAction func saveAndExit(_ sender: Any) {
+        // UIImageWriteToSavedPhotosAlbum(takenPhoto!, nil, nil, nil)
         self.dismiss(animated: true, completion: nil)
-        printIt(img: takenPhoto)
+    }
+    
+    @IBAction func saveAndPrint(_ sender: UIButton) {
+        saveAndExit(self)
+//        printIt(img: takenPhoto)
     }
     
     func printIt(img:Any) {
