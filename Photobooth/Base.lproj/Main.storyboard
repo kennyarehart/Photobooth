@@ -127,13 +127,11 @@
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="shadowOffset" width="10" height="11"/>
                             </label>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jC0-fl-cWK">
-                                <rect key="frame" x="339" y="193" width="516" height="449.00000000000011"/>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jC0-fl-cWK">
+                                <rect key="frame" x="-0.21362678839977889" y="0.0" width="1194" height="834.00000000000023"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <size key="titleShadowOffset" width="3" height="3"/>
-                                <state key="normal" title="START">
-                                    <color key="titleColor" red="0.94499569488952506" green="1" blue="0.064662488563626663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="icon_start">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -154,4 +152,7 @@
             <point key="canvasLocation" x="1722.6130653266332" y="205.75539568345326"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_start" width="635" height="635"/>
+    </resources>
 </document>

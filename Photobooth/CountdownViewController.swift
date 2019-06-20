@@ -41,6 +41,15 @@ class CountdownViewController: UIViewController {
         
         // Add UIView as a Subview
         self.view.addSubview(self.uiFlash!)
+        
+        startButton.imageView?.contentMode = .scaleAspectFit
+        let p:CGFloat = 0.68
+        startButton.imageEdgeInsets = UIEdgeInsets.init(
+            top: startButton.frame.size.height * p,
+            left: startButton.frame.size.width * p,
+            bottom: startButton.frame.size.height * p,
+            right: startButton.frame.size.width * p)
+        
     }
     
     @objc func doThisWhenNotify() { print("I've sent a spark!") }
