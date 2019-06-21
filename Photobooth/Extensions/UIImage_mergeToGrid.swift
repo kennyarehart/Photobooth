@@ -10,17 +10,19 @@ import UIKit
 
 extension UIImage {
     func mergeToGrid(images: [UIImage]) -> UIImage {
+        let bleed: CGFloat = 49.0
+        let padding: CGFloat = 10.0
         let first = images[0]
-        let newWidth = 1606.0 // 1515.0 //first.size.width * 2
-        let newHeight = 1100.0 // 1010.0 //first.size.height * 2
+        var newHeight = first.size.height * 2 + padding * 3
+        var newWidth = newHeight * (6/4)
+        newHeight += bleed * 2
+        newWidth += bleed * 2
+        print(newWidth, "x", newHeight)
+        
         let newSize = CGSize(width: newWidth, height: newHeight)
 //        print(newWidth, "x", newHeight, "|", newSize)
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        
-        // background color first
-//        UIColor.gray.setFill()
-//        UIRectFill(CGRect(x:0, y: 0, width:newWidth, height:newHeight))
         
         let bgImage = UIImage(named: "photobooth_bg_white")
         bgImage!.draw(in: CGRect(x:0.0, y:0.0, width: newWidth, height: newHeight))
@@ -28,9 +30,9 @@ extension UIImage {
         // add each image
         for (index, element) in images.enumerated() {
             let xIndex = CGFloat(index % 2)
-            let x = xIndex * first.size.width + (xIndex + 1) * 25.0 + 44.0
+            let x = xIndex * first.size.width + (xIndex + 1) * padding + bleed + padding
             let yIndex = floor(CGFloat(index) / 2)
-            let y = yIndex * first.size.height + (yIndex + 1) * 17.0 + 44.0
+            let y = yIndex * first.size.height + (yIndex + 1) * padding + bleed
             print(xIndex, yIndex, "|", xIndex, yIndex)
             element.draw(in: CGRect(origin: CGPoint(x: Double(x), y: Double(y)), size: first.size))
         }
@@ -40,21 +42,28 @@ extension UIImage {
         return newImage
     }
     
-    func mergeToGridOnly(images: [UIImage]) -> UIImage {
+    func mergeToGridOnly(images: [UIImage], isPreview: Bool) -> UIImage {
+        let padding:CGFloat = isPreview ? 5.0 : 10.0
         let first = images[0]
-        let newWidth = first.size.width * 2 + 16.0 * 3
-        let newHeight = first.size.height * 2 + 16.0 * 3
+        let newWidth = first.size.width * 2 + padding * 3
+        let newHeight = first.size.height * 2 + padding * 3
         let newSize = CGSize(width: newWidth, height: newHeight)
         //        print(newWidth, "x", newHeight, "|", newSize)
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         
+        if isPreview {
+            // background color first
+            UIColor.white.setFill()
+            UIRectFill(CGRect(x:0, y: 0, width:newWidth, height:newHeight))
+        }
+        
         // add each image
         for (index, element) in images.enumerated() {
             let xIndex = CGFloat(index % 2)
-            let x = xIndex * (first.size.width + 16.0) + 16.0
+            let x = xIndex * (first.size.width + padding) + padding
             let yIndex = floor(CGFloat(index) / 2)
-            let y = yIndex * (first.size.height + 16.0) + 16.0
+            let y = yIndex * (first.size.height + padding) + padding
 //            print(xIndex, yIndex, "|", xIndex, yIndex)
             element.draw(in: CGRect(origin: CGPoint(x: Double(x), y: Double(y)), size: first.size))
         }

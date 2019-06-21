@@ -14,29 +14,29 @@ class PhotoViewController: UIViewController {
         return true
     }
     
-    var takenPhoto:UIImage?
-    var gridOnlyPhoto:UIImage?
+    var printPhoto:UIImage?
+    var previewPhoto:UIImage?
     
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let availableImage = gridOnlyPhoto {
+        if let availableImage = previewPhoto {
             imageView.image = availableImage
         }
     }
     @IBAction func saveAndExit(_ sender: Any) {
-        // UIImageWriteToSavedPhotosAlbum(takenPhoto!, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(printPhoto!, nil, nil, nil)
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveAndPrint(_ sender: UIButton) {
         saveAndExit(self)
-//        printIt(img: takenPhoto)
+//        runPrintJob()
     }
     
-    func printIt(img:Any) {
+    func runPrintJob() {
         let printInfo = UIPrintInfo(dictionary: nil)
         printInfo.jobName = "My Print Job"
         printInfo.outputType = .photo
@@ -45,7 +45,7 @@ class PhotoViewController: UIViewController {
         printController.printInfo = printInfo
         
         printController.showsNumberOfCopies = false
-        printController.printingItem = img
+        printController.printingItem = printPhoto
         
         //Wi-Fi is connected to TP-LINK_Extender_873053 and has the IP address 192.168.0.100.
         // If you want to specify a printer
