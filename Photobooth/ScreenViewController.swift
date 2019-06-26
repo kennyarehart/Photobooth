@@ -20,12 +20,12 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(doSomethingAfterNotified),
-                                               name: NSNotification.Name(rawValue: myNotificationKey),
+                                               selector: #selector(handleCountdownLoop),
+                                               name: NSNotification.Name(rawValue: keyCountdownLoop),
                                                object: nil)
     }
     
-    @objc func doSomethingAfterNotified(_ notification: NSNotification) {
+    @objc func handleCountdownLoop(_ notification: NSNotification) {
         print("I've been notified", (notification.object as! CountdownViewController).totalCount)
         takePhoto = true
     }
@@ -89,7 +89,8 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 
                 // save that photo first
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-               
+                
+                // store it
                 imagePool.append(image)
                 print(imagePool.count, imagePool.capacity, image.size)
                 if imagePool.count == 4 {
@@ -113,7 +114,6 @@ class ScreenViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .down)
             }
         }
-        
         return nil
     }
     

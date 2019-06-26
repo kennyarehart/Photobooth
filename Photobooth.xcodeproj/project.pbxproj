@@ -16,6 +16,7 @@
 		52BF522322B0730000899F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BF522222B0730000899F8E /* Assets.xcassets */; };
 		52BF522622B0730000899F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BF522422B0730000899F8E /* LaunchScreen.storyboard */; };
 		52BF522E22B0758200899F8E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF522D22B0758200899F8E /* PhotoViewController.swift */; };
+		52D3084522C2EDDA00179A3A /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3084422C2EDDA00179A3A /* globals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		52BF522522B0730000899F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52BF522722B0730000899F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52BF522D22B0758200899F8E /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		52D3084422C2EDDA00179A3A /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				52BF522422B0730000899F8E /* LaunchScreen.storyboard */,
 				52BF522722B0730000899F8E /* Info.plist */,
 				52420C1922B0CCCD00275292 /* ScreenViewController.swift */,
+				52D3084422C2EDDA00179A3A /* globals.swift */,
 			);
 			path = Photobooth;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				52420C1822B0BBEF00275292 /* CountdownViewController.swift in Sources */,
 				52BF521E22B072FF00899F8E /* ViewController.swift in Sources */,
 				52420C1A22B0CCCD00275292 /* ScreenViewController.swift in Sources */,
+				52D3084522C2EDDA00179A3A /* globals.swift in Sources */,
 				52BF521C22B072FF00899F8E /* AppDelegate.swift in Sources */,
 				52BF522E22B0758200899F8E /* PhotoViewController.swift in Sources */,
 				5222E01C22B32F100043B882 /* UIImage_mergeToGrid.swift in Sources */,

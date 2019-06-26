@@ -8,7 +8,7 @@
 
 import UIKit
 
-let myNotificationKey = "com.kennyarehart.notificationKey"
+//let myNotificationKey = "com.kennyarehart.notificationKey"
 
 class CountdownViewController: UIViewController {
 
@@ -23,10 +23,10 @@ class CountdownViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         timeLabel.text = ""
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(doThisWhenNotify),
-                                               name: NSNotification.Name(rawValue: myNotificationKey),
-                                               object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(doThisWhenNotify),
+//                                               name: NSNotification.Name(rawValue: myNotificationKey),
+//                                               object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +52,7 @@ class CountdownViewController: UIViewController {
         
     }
     
-    @objc func doThisWhenNotify() { print("I've sent a spark!") }
+//    @objc func doThisWhenNotify() { print("I've sent a spark!") }
     
     @IBOutlet weak var startButton: UIButton!
     
@@ -84,7 +84,7 @@ class CountdownViewController: UIViewController {
         if clockCount == 0 {
             totalCount += 1
             animFlash()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: keyCountdownLoop), object: self)
             if totalCount < 4 {
                 clockCount = 4
             } else {

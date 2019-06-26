@@ -10,30 +10,44 @@ import UIKit
 
 class PhotoViewController: UIViewController {
 
+    var printTotal = 1
+    var printPhoto:UIImage?
+    var previewPhoto:UIImage? 
+   
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    var printPhoto:UIImage?
-    var previewPhoto:UIImage?
-    
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var printCountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // should immediately save
+        UIImageWriteToSavedPhotosAlbum(printPhoto!, nil, nil, nil)
+        
+        printTotal = 1
+        
         if let availableImage = previewPhoto {
             imageView.image = availableImage
         }
     }
-    @IBAction func saveAndExit(_ sender: Any) {
-        UIImageWriteToSavedPhotosAlbum(printPhoto!, nil, nil, nil)
+    @IBAction func printCountChange(_ sender: Any) {
+        printTotal += 1
+        if printTotal == 4 {
+            printTotal = 1
+        }
+        printCountLabel.text = String(printTotal)
+    }
+    
+    @IBAction func exit(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveAndPrint(_ sender: UIButton) {
-        saveAndExit(self)
-//        runPrintJob()
+    @IBAction func printAndExit(_ sender: Any) {
+        runPrintJob()
+        exit(self)
     }
     
     func runPrintJob() {
