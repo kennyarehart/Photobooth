@@ -10,9 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var currentPrinter: UIPrinter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var printerPicker = UIPrinterPickerController.init()
     }
     
 }
