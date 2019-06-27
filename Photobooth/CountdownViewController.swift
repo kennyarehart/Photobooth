@@ -32,7 +32,7 @@ class CountdownViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         startButton.isHidden = false
         self.ogTransform = self.timeLabel.transform
-        self.lgTransform = self.timeLabel.transform.scaledBy(x: 2.0, y: 2.0)
+        self.lgTransform = self.timeLabel.transform.scaledBy(x: 3.0, y: 3.0)
         self.smallTransform = self.timeLabel.transform.scaledBy(x: 0.5, y: 0.5)
         
         uiFlash = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
@@ -95,7 +95,7 @@ class CountdownViewController: UIViewController {
     
     func updateLabel() {
         if clockCount > 3 {
-            timeLabel.text = "Ready??"
+            timeLabel.text = "<< Look Left"
         } else if clockCount == 0 {
             timeLabel.text = ""
         } else {
